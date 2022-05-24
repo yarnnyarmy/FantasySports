@@ -1,7 +1,7 @@
 package org.yarrnyarmy.calculations;
 
-import model.*;
-import org.yarrnyarmy.services.AllBasketballGameServices;
+import org.yarrnyarmy.model.AllBasketballGames.*;
+import org.yarrnyarmy.services.allBasketballGames.AllBasketballGameServices;
 
 import java.util.*;
 

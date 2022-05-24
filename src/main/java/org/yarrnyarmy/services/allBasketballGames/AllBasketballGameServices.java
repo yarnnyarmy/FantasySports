@@ -1,10 +1,10 @@
-package org.yarrnyarmy.services;
+package org.yarrnyarmy.services.allBasketballGames;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import model.*;
+import org.yarrnyarmy.model.AllBasketballGames.*;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

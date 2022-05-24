@@ -1,6 +1,8 @@
-package model;
+package org.yarrnyarmy.model.AllBasketballGames;
 
-public class BasketballAllGameC extends AllGameBasketballPlayers{
+import org.yarrnyarmy.model.AllBasketballGames.AllGameBasketballPlayers;
+
+public class BasketballAllGameC extends AllGameBasketballPlayers {
 
     public BasketballAllGameC() {
     }

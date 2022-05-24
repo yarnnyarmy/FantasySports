@@ -1,4 +1,4 @@
-package model;
+package org.yarrnyarmy.model.AllBasketballGames;
 
 public class AllGameBasketballPlayers {
 
