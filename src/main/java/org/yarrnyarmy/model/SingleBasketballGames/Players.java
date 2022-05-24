@@ -1,11 +1,20 @@
 package org.yarrnyarmy.model.SingleBasketballGames;
 
+import com.opencsv.bean.CsvBindByName;
+
 public class Players {
+
+    @CsvBindByName
     private String name;
+    @CsvBindByName
     private String id;
+    @CsvBindByName
     private String position;
+    @CsvBindByName
     private String team;
+    @CsvBindByName
     private int salary;
+    @CsvBindByName
     private double averagePoints;
 
     //Constructors

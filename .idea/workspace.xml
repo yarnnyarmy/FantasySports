@@ -4,22 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b805632-e117-4b7d-800d-a8ff22df4b35" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/BasketballAllGameC.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/BasketballAllGameF.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/BasketballAllGameG.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/BasketballAllGameUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/BestTeams.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/calculations/AllGameBasketballCalculations.java" afterDir="false" />
+    <list default="true" id="1b805632-e117-4b7d-800d-a8ff22df4b35" name="Changes" comment="Added different models that extend from AllBasketballGamePlayers. Also added the calculations class to add all the players to the bestTeam.">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/model/AllGameBasketballPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/AllGameBasketballPlayers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/model/BasketballAllGamePF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/BasketballAllGamePF.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/model/BasketballAllGamePG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/BasketballAllGamePG.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/model/BasketballAllGameSF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/BasketballAllGameSF.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/model/BasketballAllGameSG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/BasketballAllGameSG.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/services/AllBasketballGameServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/services/AllBasketballGameServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/model/SingleBasketballGames/Players.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/model/SingleBasketballGames/Players.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/services/allBasketballGames/singleBasketballGames/ConvertFromCSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/services/singleBasketballGames/ConvertFromCSV.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,8 +80,19 @@
       <workItem from="1653261609044" duration="136000" />
       <workItem from="1653318903511" duration="17462000" />
       <workItem from="1653339094243" duration="2328000" />
-      <workItem from="1653341462953" duration="6430000" />
+      <workItem from="1653341462953" duration="7198000" />
+      <workItem from="1653354703505" duration="2000" />
+      <workItem from="1653367619032" duration="6000" />
+      <workItem from="1653415732474" duration="2616000" />
     </task>
+    <task id="LOCAL-00001" summary="Added different models that extend from AllBasketballGamePlayers. Also added the calculations class to add all the players to the bestTeam.">
+      <created>1653352168584</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1653352168584</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -107,6 +108,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added different models that extend from AllBasketballGamePlayers. Also added the calculations class to add all the players to the bestTeam." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added different models that extend from AllBasketballGamePlayers. Also added the calculations class to add all the players to the bestTeam." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

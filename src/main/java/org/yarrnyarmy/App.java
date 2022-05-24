@@ -1,7 +1,6 @@
 package org.yarrnyarmy;
 
-import org.yarrnyarmy.calculations.AllGameBasketballCalculations;
-import org.yarrnyarmy.services.allBasketballGames.singleBasketballGames.ConvertFromCSV;
+import org.yarrnyarmy.services.singleBasketballGames.ConvertFromCSV;
 
 /**
  * Hello world!
