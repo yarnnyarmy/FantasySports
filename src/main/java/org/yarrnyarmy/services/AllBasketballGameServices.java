@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import org.yarrnyarmy.model.*;
+import model.*;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -19,7 +19,7 @@ public class AllBasketballGameServices {
     try{
 
         //System.out.println("Select the file with all the players");
-            String myObj = "C:\\Users\\Yarnell\\Desktop\\FantasySportsAPI\\AllTeamsBasketball\\raw.json";
+            String myObj = "C:\\Users\\yarnn\\OneDrive\\Desktop\\DraftKings_Insominia\\AllBasketballGames\\AllGamesDraftkings.json";
             JsonElement fileElement = JsonParser.parseReader(new FileReader(myObj));
             JsonObject jsonObject = fileElement.getAsJsonObject();
 
@@ -30,13 +30,14 @@ public class AllBasketballGameServices {
                 JsonObject nameJson = nameElement.getAsJsonObject();
                 allGame.setFirstName(nameJson.get("firstName").getAsString());
                 allGame.setLastName(nameJson.get("lastName").getAsString());
-                if(basketball.isEmpty() || !Objects.equals(allGame.getLastName(), basketball.get(length - 1).getLastName())){
+                if(basketball.isEmpty() || (!Objects.equals(allGame.getLastName(), basketball.get(length - 1).getLastName())) &&
+                   !Objects.equals(allGame.getFirstName(), basketball.get(length -1).getFirstName())){
                     allGame.setDisabled(nameJson.get("isDisabled").getAsBoolean());
                     allGame.setPosition(nameJson.get("position").getAsString());
                     allGame.setSalary(nameJson.get("salary").getAsInt());
                     allGame.setTeam(nameJson.get("teamAbbreviation").getAsString());
                     allGame.setPlayerDraftKingsId(nameJson.get("draftableId").getAsLong());
-
+                    allGame.setStatus(nameJson.get("status").getAsString());
                     //get stats information in array and add it to draftkingsAverage
                     JsonArray statsArray = nameJson.getAsJsonArray("draftStatAttributes");
 
@@ -45,7 +46,7 @@ public class AllBasketballGameServices {
                     JsonObject pointsObject = averagePoints.getAsJsonObject();
                     String fantasyPoints = pointsObject.get("value").getAsString();
                     double d = 0;
-                    if(!allGame.getDisabled()){
+                    if(!Objects.equals(allGame.getStatus(), "OUT")){
                         if(Objects.equals(fantasyPoints, "-")){
                             fantasyPoints = "0";
                         }
@@ -54,11 +55,12 @@ public class AllBasketballGameServices {
                            char c = fantasyPoints.charAt(i);
                             if (c == 't' || c == 'h' || c == 'n' || c == 'd') {
                                 fantasyPoints = "0";
+                                break;
                             }
                         }
                         d = Double.parseDouble(fantasyPoints);
                     }
-                    if(d > 5){
+                    if(d > 15){
                         allGame.setDraftKingsFantasyPoints(d);
                         basketball.add(allGame);
                     }
@@ -90,10 +92,8 @@ public class AllBasketballGameServices {
                 allPG.add(bp);
             }
         }
-
-        for(BasketballAllGamePG allPgs: allPG){
-            System.out.println(allPgs);
-        }
+        Collections.sort(allPG, Comparator.comparingDouble(BasketballAllGamePG::getDraftKingsFantasyPoints));
+        Collections.reverse(allPG);
         return allPG;
     }
 
@@ -114,10 +114,9 @@ public class AllBasketballGameServices {
                     allSG.add(sg);
                 }
             }
+        Collections.sort(allSG, Comparator.comparingDouble(BasketballAllGameSG::getDraftKingsFantasyPoints));
+        Collections.reverse(allSG);
 
-            for(BasketballAllGameSG allSgs: allSG){
-                System.out.println(allSgs);
-            }
             return allSG;
     }
 
@@ -138,10 +137,8 @@ public class AllBasketballGameServices {
                 allSF.add(sf);
             }
         }
-
-        for(BasketballAllGameSF allSfs: allSF){
-            System.out.println(allSfs);
-        }
+        Collections.sort(allSF, Comparator.comparingDouble(BasketballAllGameSF::getDraftKingsFantasyPoints));
+        Collections.reverse(allSF);
         return allSF;
     }
 
@@ -162,13 +159,98 @@ public class AllBasketballGameServices {
                 allPF.add(pf);
             }
         }
-
-        for(BasketballAllGamePF allPfs: allPF){
-            System.out.println(allPfs);
-        }
+        Collections.sort(allPF, Comparator.comparingDouble(BasketballAllGamePF::getDraftKingsFantasyPoints));
+        Collections.reverse(allPF);
         return allPF;
     }
 
+    public List<BasketballAllGameC> getAllC(){
+        List<AllGameBasketballPlayers> allPlayers = addAllPlayers();
+        List<BasketballAllGameC> allC = new ArrayList<>();
+        for(AllGameBasketballPlayers person : allPlayers){
+            BasketballAllGameC c = new BasketballAllGameC();
+            if(Objects.equals(person.getPosition(), "C")|| Objects.equals(person.getPosition(), "PF/C")){
+                c.setFirstName(person.getFirstName());
+                c.setLastName(person.getLastName());
+                c.setPosition(person.getPosition());
+                c.setTeam(person.getTeam());
+                c.setSalary(person.getSalary());
+                c.setPlayerDraftKingsId(person.getPlayerDraftKingsId());
+                c.setDisabled(person.getDisabled());
+                c.setDraftKingsFantasyPoints(person.getDraftKingsFantasyPoints());
+                allC.add(c);
+            }
+        }
+        Collections.sort(allC, Comparator.comparingDouble(BasketballAllGameC::getDraftKingsFantasyPoints));
+        Collections.reverse(allC);
+        return allC;
+    }
+
+    public List<BasketballAllGameG> getAllG(){
+        List<AllGameBasketballPlayers> allPlayers = addAllPlayers();
+        List<BasketballAllGameG> allG = new ArrayList<>();
+        for(AllGameBasketballPlayers person : allPlayers){
+            BasketballAllGameG g = new BasketballAllGameG();
+            if(Objects.equals(person.getPosition(), "PG")|| Objects.equals(person.getPosition(), "SG")
+                    || Objects.equals(person.getPosition(), "PG/SG") || Objects.equals(person.getPosition(), "SG/SF")){
+                g.setFirstName(person.getFirstName());
+                g.setLastName(person.getLastName());
+                g.setPosition(person.getPosition());
+                g.setTeam(person.getTeam());
+                g.setSalary(person.getSalary());
+                g.setPlayerDraftKingsId(person.getPlayerDraftKingsId());
+                g.setDisabled(person.getDisabled());
+                g.setDraftKingsFantasyPoints(person.getDraftKingsFantasyPoints());
+                allG.add(g);
+            }
+        }
+        Collections.sort(allG, Comparator.comparingDouble(BasketballAllGameG::getDraftKingsFantasyPoints));
+        Collections.reverse(allG);
+        return allG;
+    }
+
+    public List<BasketballAllGameF> getAllF(){
+        List<AllGameBasketballPlayers> allPlayers = addAllPlayers();
+        List<BasketballAllGameF> allF = new ArrayList<>();
+        for(AllGameBasketballPlayers person : allPlayers){
+            BasketballAllGameF f = new BasketballAllGameF();
+            if(Objects.equals(person.getPosition(), "SG/SF")|| Objects.equals(person.getPosition(), "SF")
+                    || Objects.equals(person.getPosition(), "PF") || Objects.equals(person.getPosition(), "PF/C")){
+                f.setFirstName(person.getFirstName());
+                f.setLastName(person.getLastName());
+                f.setPosition(person.getPosition());
+                f.setTeam(person.getTeam());
+                f.setSalary(person.getSalary());
+                f.setPlayerDraftKingsId(person.getPlayerDraftKingsId());
+                f.setDisabled(person.getDisabled());
+                f.setDraftKingsFantasyPoints(person.getDraftKingsFantasyPoints());
+                allF.add(f);
+            }
+        }
+        Collections.sort(allF, Comparator.comparingDouble(BasketballAllGameF::getDraftKingsFantasyPoints));
+        Collections.reverse(allF);
+        return allF;
+    }
+
+    public List<BasketballAllGameUtil> getAllUtil(){
+        List<AllGameBasketballPlayers> allPlayers = addAllPlayers();
+        List<BasketballAllGameUtil> allUtil = new ArrayList<>();
+        for(AllGameBasketballPlayers person : allPlayers){
+            BasketballAllGameUtil ut = new BasketballAllGameUtil();
+            ut.setFirstName(person.getFirstName());
+            ut.setLastName(person.getLastName());
+            ut.setPosition(person.getPosition());
+            ut.setTeam(person.getTeam());
+            ut.setSalary(person.getSalary());
+            ut.setPlayerDraftKingsId(person.getPlayerDraftKingsId());
+            ut.setDisabled(person.getDisabled());
+            ut.setDraftKingsFantasyPoints(person.getDraftKingsFantasyPoints());
+            allUtil.add(ut);
+        }
+        Collections.sort(allUtil, Comparator.comparingDouble(BasketballAllGameUtil::getDraftKingsFantasyPoints));
+        Collections.reverse(allUtil);
+        return allUtil;
+    }
     public void showAllPlayers(){
         List<AllGameBasketballPlayers> people = addAllPlayers();
         int count = 1;

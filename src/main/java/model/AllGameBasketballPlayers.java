@@ -1,4 +1,4 @@
-package org.yarrnyarmy.model;
+package model;
 
 public class AllGameBasketballPlayers {
 
@@ -11,7 +11,7 @@ public class AllGameBasketballPlayers {
     private String team;
     private Boolean isDisabled;
     private double draftKingsFantasyPoints;
-
+    private String status;
     //Constructors
     public AllGameBasketballPlayers() {
     }
@@ -19,7 +19,7 @@ public class AllGameBasketballPlayers {
     public AllGameBasketballPlayers(String id, String firstName,
                                     String lastName, int salary, long playerDraftKingsId,
                                     String position, String team, Boolean isDisabled,
-                                    double draftKingsFantasyPoints) {
+                                    double draftKingsFantasyPoints, String status) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -29,6 +29,7 @@ public class AllGameBasketballPlayers {
         this.team = team;
         this.isDisabled = isDisabled;
         this.draftKingsFantasyPoints = draftKingsFantasyPoints;
+        this.status = status;
     }
 
     //Getters and Setters
@@ -96,6 +97,14 @@ public class AllGameBasketballPlayers {
         this.draftKingsFantasyPoints = draftKingsFantasyPoints;
     }
 
+    public String getStatus(){
+        return status;
+    }
+
+    public void setStatus(String status){
+        this.status = status;
+    }
+
     //toString
     @Override
     public String toString() {
@@ -109,6 +118,7 @@ public class AllGameBasketballPlayers {
                 ", team='" + team + '\'' +
                 ", isDisabled=" + isDisabled +
                 ", draftKingsFantasyPoints=" + draftKingsFantasyPoints +
+                ", status=" + status +
                 '}';
     }
 }
