@@ -2,7 +2,7 @@ package org.yarrnyarmy.model.SingleBasketballGames;
 
 import com.opencsv.bean.CsvBindByName;
 
-public class Players {
+public class AllSingleBasketballPlayers {
 
     @CsvBindByName
     private String name;
@@ -18,10 +18,10 @@ public class Players {
     private double averagePoints;
 
     //Constructors
-    public Players() {
+    public AllSingleBasketballPlayers() {
     }
 
-    public Players(String name, String id, String position, String team, int salary, double averagePoints) {
+    public AllSingleBasketballPlayers(String name, String id, String position, String team, int salary, double averagePoints) {
         this.name = name;
         this.id = id;
         this.position = position;

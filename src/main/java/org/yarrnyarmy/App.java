@@ -1,5 +1,6 @@
 package org.yarrnyarmy;
 
+import org.yarrnyarmy.calculations.SingleBasketballCalculations;
 import org.yarrnyarmy.services.singleBasketballGames.ConvertFromCSV;
 
 /**
@@ -18,7 +19,7 @@ public class App
         //AllGameBasketballCalculations afc = new AllGameBasketballCalculations();
         //afc.getAllBestTeams();
 
-        ConvertFromCSV csv = new ConvertFromCSV();
-        csv.getPlayersFromCSV();
+        SingleBasketballCalculations sc = new SingleBasketballCalculations();
+        sc.getBestTeams();
     }
 }
