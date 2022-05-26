@@ -19,7 +19,7 @@ public class AllBasketballGameServices {
     try{
 
         //System.out.println("Select the file with all the players");
-            String myObj = "C:\\Users\\yarnn\\OneDrive\\Desktop\\DraftKings_Insominia\\AllBasketballGames\\AllGamesDraftkings.json";
+            String myObj = "C:\\Users\\Yarnell\\Desktop\\FantasySportsAPI\\AllTeamsBasketball\\05252022_Basketball\\allTeams.json";
             JsonElement fileElement = JsonParser.parseReader(new FileReader(myObj));
             JsonObject jsonObject = fileElement.getAsJsonObject();
 
