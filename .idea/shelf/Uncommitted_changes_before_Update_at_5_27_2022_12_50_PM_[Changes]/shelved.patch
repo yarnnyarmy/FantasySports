@@ -1,0 +1,152 @@
+Index: src/main/java/org/yarrnyarmy/services/singleBasketballGames/ConvertFromCSV.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.yarrnyarmy.services.singleBasketballGames;\r\n\r\nimport com.opencsv.bean.CsvToBeanBuilder;\r\nimport org.yarrnyarmy.model.SingleBasketballGames.AllSingleBasketballPlayers;\r\n\r\nimport java.io.FileNotFoundException;\r\nimport java.io.FileReader;\r\nimport java.util.List;\r\n\r\npublic class ConvertFromCSV {\r\n\r\n\r\n    public List<AllSingleBasketballPlayers> getPlayersFromCSV() {\r\n        List<AllSingleBasketballPlayers> player = null;\r\n        try {\r\n            FileReader file = new FileReader(\"C:\\\\Users\\\\Yarnell\\\\Desktop\\\\DKSalaries.csv\");\r\n            player = new CsvToBeanBuilder<AllSingleBasketballPlayers>(file)\r\n                    .withType(AllSingleBasketballPlayers.class)\r\n                    .build()\r\n                    .parse();\r\n\r\n        } catch (FileNotFoundException e) {\r\n            e.printStackTrace();\r\n            e.getCause();\r\n        }\r\n        return player;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/yarrnyarmy/services/singleBasketballGames/ConvertFromCSV.java b/src/main/java/org/yarrnyarmy/services/singleBasketballGames/ConvertFromCSV.java
+--- a/src/main/java/org/yarrnyarmy/services/singleBasketballGames/ConvertFromCSV.java	(revision d902ff71b7482af5b033840ea4ef252eed391a44)
++++ b/src/main/java/org/yarrnyarmy/services/singleBasketballGames/ConvertFromCSV.java	(date 1653524517072)
+@@ -13,7 +13,7 @@
+     public List<AllSingleBasketballPlayers> getPlayersFromCSV() {
+         List<AllSingleBasketballPlayers> player = null;
+         try {
+-            FileReader file = new FileReader("C:\\Users\\Yarnell\\Desktop\\DKSalaries.csv");
++            FileReader file = new FileReader("C:\\Users\\yarnn\\OneDrive\\Desktop\\DraftkingsExcel\\05252022_Basketball_SingleGame\\single_game.csv");
+             player = new CsvToBeanBuilder<AllSingleBasketballPlayers>(file)
+                     .withType(AllSingleBasketballPlayers.class)
+                     .build()
+Index: src/main/java/org/yarrnyarmy/calculations/SingleBasketballCalculations.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.yarrnyarmy.calculations;\r\n\r\nimport org.yarrnyarmy.model.SingleBasketballGames.SingleBasketballCpt;\r\n\r\nimport org.yarrnyarmy.model.SingleBasketballGames.SingleBestTeams;\r\n\r\nimport org.yarrnyarmy.services.singleBasketballGames.SingleBasketballGameServices;\r\n\r\nimport java.util.*;\r\n\r\npublic class SingleBasketballCalculations {\r\n\r\n    SingleBasketballGameServices sb = new SingleBasketballGameServices();\r\n\r\n    public List<SingleBestTeams> getBestTeams() {\r\n        List<SingleBasketballCpt> cptPlayers = sb.getAllCpts();\r\n        List<SingleBasketballCpt> utilPlayers = sb.getAllCpts();\r\n        List<SingleBestTeams> singleBestTeams = new ArrayList<>();\r\n        for (int a = 0; a < cptPlayers.size(); a++) {\r\n            for (int b = 0; b < utilPlayers.size(); b++) {\r\n                if (!Objects.equals(cptPlayers.get(a).getName(), utilPlayers.get(b).getName())) {\r\n                    for (int c = b + 1; c < utilPlayers.size(); c++) {\r\n                        if (!Objects.equals(cptPlayers.get(a).getName(), utilPlayers.get(c).getName()) && !Objects.equals(utilPlayers.get(b).getId(), utilPlayers.get(c).getId())) {\r\n                            for (int d = c + 1; d < utilPlayers.size(); d++) {\r\n                                if (!Objects.equals(cptPlayers.get(a).getName(), utilPlayers.get(d).getName()) && !Objects.equals(utilPlayers.get(b).getId(), utilPlayers.get(d).getId())\r\n                                        && !Objects.equals(utilPlayers.get(c).getId(), utilPlayers.get(d).getId())) {\r\n                                    for (int e = d + 1; e < utilPlayers.size(); e++) {\r\n                                        if (!Objects.equals(cptPlayers.get(a).getName(), utilPlayers.get(e).getName()) && !Objects.equals(utilPlayers.get(b).getId(), utilPlayers.get(e).getId())\r\n                                                && !Objects.equals(utilPlayers.get(c).getId(), utilPlayers.get(e).getId()) && !Objects.equals(utilPlayers.get(d).getId(), utilPlayers.get(e).getId())) {\r\n                                            for (int f = e + 1; f < utilPlayers.size(); f++) {\r\n                                                SingleBestTeams bestTeam = new SingleBestTeams();\r\n                                                if (!Objects.equals(cptPlayers.get(a).getName(), utilPlayers.get(f).getName()) && !Objects.equals(utilPlayers.get(b).getId(), utilPlayers.get(f).getId())\r\n                                                        && !Objects.equals(utilPlayers.get(c).getId(), utilPlayers.get(f).getId()) && !Objects.equals(utilPlayers.get(d).getId(), utilPlayers.get(f).getId()) &&\r\n                                                        !Objects.equals(utilPlayers.get(e).getId(), utilPlayers.get(f).getId())) {\r\n                                                    if (!Objects.equals(cptPlayers.get(a).getTeam(), utilPlayers.get(b).getTeam()) && !Objects.equals(cptPlayers.get(a).getTeam(), utilPlayers.get(c).getTeam()) &&\r\n                                                            !Objects.equals(cptPlayers.get(a).getTeam(), utilPlayers.get(d).getTeam()) && !Objects.equals(cptPlayers.get(a).getTeam(), utilPlayers.get(e).getTeam()) &&\r\n                                                            !Objects.equals(cptPlayers.get(a).getTeam(), utilPlayers.get(f).getTeam())) {\r\n                                                        if ((Objects.equals(cptPlayers.get(a).getName(), \"Stephen Curry\") || Objects.equals(utilPlayers.get(b).getName(), \"Stephen Curry\") ||\r\n                                                                Objects.equals(utilPlayers.get(c).getName(), \"Stephen Curry\") || Objects.equals(utilPlayers.get(d).getName(), \"Stephen Curry\") ||\r\n                                                                Objects.equals(utilPlayers.get(e).getName(), \"Stephen Curry\") ||\r\n                                                                Objects.equals(utilPlayers.get(f).getName(), \"Stephen Curry\")) && (Objects.equals(cptPlayers.get(a).getName(), \"Klay Thompson\") ||\r\n                                                                Objects.equals(utilPlayers.get(b).getName(), \"Klay Thompson\") ||\r\n                                                                Objects.equals(utilPlayers.get(c).getName(), \"Klay Thompson\") || Objects.equals(utilPlayers.get(d).getName(), \"Klay Thompson\") ||\r\n                                                                Objects.equals(utilPlayers.get(e).getName(), \"Klay Thompson\") ||\r\n                                                                Objects.equals(utilPlayers.get(f).getName(), \"Klay Thompson\"))){\r\n                                                            int totalSalary = cptPlayers.get(a).getSalary() + utilPlayers.get(b).getSalary() + utilPlayers.get(c).getSalary() + utilPlayers.get(d).getSalary() +\r\n                                                                    utilPlayers.get(e).getSalary() + utilPlayers.get(f).getSalary();\r\n\r\n                                                            if (totalSalary <= 50000) {\r\n                                                                String totalNames = cptPlayers.get(a).getName() + \" \" + utilPlayers.get(b).getName() + \" \" + utilPlayers.get(c).getName() + \" \" + utilPlayers.get(d).getName() + \" \" +\r\n                                                                        utilPlayers.get(e).getName() + \" \" + utilPlayers.get(f).getName();\r\n\r\n\r\n                                                                double totalPoints = cptPlayers.get(a).getAveragePoints() + utilPlayers.get(b).getAveragePoints() + utilPlayers.get(c).getAveragePoints() + utilPlayers.get(d).getAveragePoints() +\r\n                                                                        utilPlayers.get(e).getAveragePoints() + utilPlayers.get(f).getAveragePoints();\r\n\r\n                                                                bestTeam.setSalary(totalSalary);\r\n                                                                bestTeam.setAveragePoints(totalPoints);\r\n                                                                bestTeam.setName(totalNames);\r\n\r\n                                                                if (singleBestTeams.size() < 20000000) {\r\n                                                                    singleBestTeams.add(bestTeam);\r\n                                                                }\r\n                                                            }\r\n                                                        }\r\n                                                    }\r\n                                                }\r\n                                            }\r\n                                        }\r\n                                    }\r\n                                }\r\n                            }\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n        }\r\n\r\n        Collections.sort(singleBestTeams, Comparator.comparingDouble(SingleBestTeams::getAveragePoints));\r\n        Collections.reverse(singleBestTeams);\r\n        return singleBestTeams;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/yarrnyarmy/calculations/SingleBasketballCalculations.java b/src/main/java/org/yarrnyarmy/calculations/SingleBasketballCalculations.java
+--- a/src/main/java/org/yarrnyarmy/calculations/SingleBasketballCalculations.java	(revision d902ff71b7482af5b033840ea4ef252eed391a44)
++++ b/src/main/java/org/yarrnyarmy/calculations/SingleBasketballCalculations.java	(date 1653524981439)
+@@ -35,14 +35,6 @@
+                                                     if (!Objects.equals(cptPlayers.get(a).getTeam(), utilPlayers.get(b).getTeam()) && !Objects.equals(cptPlayers.get(a).getTeam(), utilPlayers.get(c).getTeam()) &&
+                                                             !Objects.equals(cptPlayers.get(a).getTeam(), utilPlayers.get(d).getTeam()) && !Objects.equals(cptPlayers.get(a).getTeam(), utilPlayers.get(e).getTeam()) &&
+                                                             !Objects.equals(cptPlayers.get(a).getTeam(), utilPlayers.get(f).getTeam())) {
+-                                                        if ((Objects.equals(cptPlayers.get(a).getName(), "Stephen Curry") || Objects.equals(utilPlayers.get(b).getName(), "Stephen Curry") ||
+-                                                                Objects.equals(utilPlayers.get(c).getName(), "Stephen Curry") || Objects.equals(utilPlayers.get(d).getName(), "Stephen Curry") ||
+-                                                                Objects.equals(utilPlayers.get(e).getName(), "Stephen Curry") ||
+-                                                                Objects.equals(utilPlayers.get(f).getName(), "Stephen Curry")) && (Objects.equals(cptPlayers.get(a).getName(), "Klay Thompson") ||
+-                                                                Objects.equals(utilPlayers.get(b).getName(), "Klay Thompson") ||
+-                                                                Objects.equals(utilPlayers.get(c).getName(), "Klay Thompson") || Objects.equals(utilPlayers.get(d).getName(), "Klay Thompson") ||
+-                                                                Objects.equals(utilPlayers.get(e).getName(), "Klay Thompson") ||
+-                                                                Objects.equals(utilPlayers.get(f).getName(), "Klay Thompson"))){
+                                                             int totalSalary = cptPlayers.get(a).getSalary() + utilPlayers.get(b).getSalary() + utilPlayers.get(c).getSalary() + utilPlayers.get(d).getSalary() +
+                                                                     utilPlayers.get(e).getSalary() + utilPlayers.get(f).getSalary();
+ 
+@@ -62,7 +54,7 @@
+                                                                     singleBestTeams.add(bestTeam);
+                                                                 }
+                                                             }
+-                                                        }
++
+                                                     }
+                                                 }
+                                             }
+Index: src/main/java/org/yarrnyarmy/App.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.yarrnyarmy;\r\n\r\nimport org.yarrnyarmy.calculations.AllGameBasketballCalculations;\r\nimport org.yarrnyarmy.calculations.SingleBasketballCalculations;\r\nimport org.yarrnyarmy.services.singleBasketballGames.ConvertFromCSV;\r\n\r\n/**\r\n * Hello world!\r\n *\r\n */\r\npublic class App \r\n{\r\n    public static void main( String[] args )\r\n    {\r\n\r\n        //AllBasketballGameServices af = new AllBasketballGameServices();\r\n        //af.getAllSG();\r\n        //af.addAllPlayers();\r\n\r\n        AllGameBasketballCalculations afc = new AllGameBasketballCalculations();\r\n        afc.getAllBestTeams();\r\n\r\n        //SingleBasketballCalculations sc = new SingleBasketballCalculations();\r\n        //sc.getBestTeams();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/yarrnyarmy/App.java b/src/main/java/org/yarrnyarmy/App.java
+--- a/src/main/java/org/yarrnyarmy/App.java	(revision d902ff71b7482af5b033840ea4ef252eed391a44)
++++ b/src/main/java/org/yarrnyarmy/App.java	(date 1653524448562)
+@@ -17,10 +17,10 @@
+         //af.getAllSG();
+         //af.addAllPlayers();
+ 
+-        AllGameBasketballCalculations afc = new AllGameBasketballCalculations();
+-        afc.getAllBestTeams();
++        //AllGameBasketballCalculations afc = new AllGameBasketballCalculations();
++        //afc.getAllBestTeams();
+ 
+-        //SingleBasketballCalculations sc = new SingleBasketballCalculations();
+-        //sc.getBestTeams();
++        SingleBasketballCalculations sc = new SingleBasketballCalculations();
++        sc.getBestTeams();
+     }
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"1b805632-e117-4b7d-800d-a8ff22df4b35\" name=\"Changes\" comment=\"Added different models that extend from AllBasketballGamePlayers. Also added the calculations class to add all the players to the bestTeam.\">\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/uiDesigner.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/yarrnyarmy/App.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/yarrnyarmy/App.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/yarrnyarmy/model/SingleBasketballGames/Players.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/yarrnyarmy/model/SingleBasketballGames/Players.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/yarrnyarmy/services/allBasketballGames/singleBasketballGames/ConvertFromCSV.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/yarrnyarmy/services/singleBasketballGames/ConvertFromCSV.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"29XEbjuu80XUtXjYXrzLdsvjg4M\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"App\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.yarrnyarmy.App\" />\r\n      <module name=\"FantasySports\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.yarrnyarmy.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.App\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"1b805632-e117-4b7d-800d-a8ff22df4b35\" name=\"Changes\" comment=\"\" />\r\n      <created>1653251106564</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1653251106564</updated>\r\n      <workItem from=\"1653251108926\" duration=\"8792000\" />\r\n      <workItem from=\"1653261539805\" duration=\"61000\" />\r\n      <workItem from=\"1653261609044\" duration=\"136000\" />\r\n      <workItem from=\"1653318903511\" duration=\"17462000\" />\r\n      <workItem from=\"1653339094243\" duration=\"2328000\" />\r\n      <workItem from=\"1653341462953\" duration=\"7198000\" />\r\n      <workItem from=\"1653354703505\" duration=\"2000\" />\r\n      <workItem from=\"1653367619032\" duration=\"6000\" />\r\n      <workItem from=\"1653415732474\" duration=\"2616000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Added different models that extend from AllBasketballGamePlayers. Also added the calculations class to add all the players to the bestTeam.\">\r\n      <created>1653352168584</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1653352168584</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Added different models that extend from AllBasketballGamePlayers. Also added the calculations class to add all the players to the bestTeam.\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Added different models that extend from AllBasketballGamePlayers. Also added the calculations class to add all the players to the bestTeam.\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" log-message=\"true\" log-stack=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.OutOfMemoryError\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision d902ff71b7482af5b033840ea4ef252eed391a44)
++++ b/.idea/workspace.xml	(date 1653525537088)
+@@ -4,12 +4,11 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="1b805632-e117-4b7d-800d-a8ff22df4b35" name="Changes" comment="Added different models that extend from AllBasketballGamePlayers. Also added the calculations class to add all the players to the bestTeam.">
+-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
++    <list default="true" id="1b805632-e117-4b7d-800d-a8ff22df4b35" name="Changes" comment="openCSV reads from bean.">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/App.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/model/SingleBasketballGames/Players.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/model/SingleBasketballGames/Players.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/services/allBasketballGames/singleBasketballGames/ConvertFromCSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/services/singleBasketballGames/ConvertFromCSV.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/calculations/SingleBasketballCalculations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/calculations/SingleBasketballCalculations.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/services/singleBasketballGames/ConvertFromCSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/services/singleBasketballGames/ConvertFromCSV.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -83,7 +82,8 @@
+       <workItem from="1653341462953" duration="7198000" />
+       <workItem from="1653354703505" duration="2000" />
+       <workItem from="1653367619032" duration="6000" />
+-      <workItem from="1653415732474" duration="2616000" />
++      <workItem from="1653415732474" duration="3130000" />
++      <workItem from="1653523958563" duration="1564000" />
+     </task>
+     <task id="LOCAL-00001" summary="Added different models that extend from AllBasketballGamePlayers. Also added the calculations class to add all the players to the bestTeam.">
+       <created>1653352168584</created>
+@@ -92,7 +92,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1653352168584</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="openCSV reads from bean.">
++      <created>1653418589849</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1653418589849</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -111,7 +118,8 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Added different models that extend from AllBasketballGamePlayers. Also added the calculations class to add all the players to the bestTeam." />
+-    <option name="LAST_COMMIT_MESSAGE" value="Added different models that extend from AllBasketballGamePlayers. Also added the calculations class to add all the players to the bestTeam." />
++    <MESSAGE value="openCSV reads from bean." />
++    <option name="LAST_COMMIT_MESSAGE" value="openCSV reads from bean." />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
+@@ -120,6 +128,11 @@
+           <properties class="java.lang.OutOfMemoryError" package="java.lang" />
+           <option name="timeStamp" value="1" />
+         </breakpoint>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/main/java/org/yarrnyarmy/calculations/SingleBasketballCalculations.java</url>
++          <line>72</line>
++          <option name="timeStamp" value="11" />
++        </line-breakpoint>
+       </breakpoints>
+     </breakpoint-manager>
+   </component>
