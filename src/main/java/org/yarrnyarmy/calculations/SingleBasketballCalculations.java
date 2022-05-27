@@ -2,6 +2,7 @@ package org.yarrnyarmy.calculations;
 
 import org.yarrnyarmy.model.SingleBasketballGames.SingleBasketballCpt;
 
+import org.yarrnyarmy.model.SingleBasketballGames.SingleBasketballUtil;
 import org.yarrnyarmy.model.SingleBasketballGames.SingleBestTeams;
 
 import org.yarrnyarmy.services.singleBasketballGames.SingleBasketballGameServices;
@@ -14,7 +15,7 @@ public class SingleBasketballCalculations {
 
     public List<SingleBestTeams> getBestTeams() {
         List<SingleBasketballCpt> cptPlayers = sb.getAllCpts();
-        List<SingleBasketballCpt> utilPlayers = sb.getAllCpts();
+        List<SingleBasketballUtil> utilPlayers = sb.getAllUitls();
         List<SingleBestTeams> singleBestTeams = new ArrayList<>();
         for (int a = 0; a < cptPlayers.size(); a++) {
             for (int b = 0; b < utilPlayers.size(); b++) {
@@ -35,34 +36,41 @@ public class SingleBasketballCalculations {
                                                     if (!Objects.equals(cptPlayers.get(a).getTeam(), utilPlayers.get(b).getTeam()) && !Objects.equals(cptPlayers.get(a).getTeam(), utilPlayers.get(c).getTeam()) &&
                                                             !Objects.equals(cptPlayers.get(a).getTeam(), utilPlayers.get(d).getTeam()) && !Objects.equals(cptPlayers.get(a).getTeam(), utilPlayers.get(e).getTeam()) &&
                                                             !Objects.equals(cptPlayers.get(a).getTeam(), utilPlayers.get(f).getTeam())) {
-                                                        if ((Objects.equals(cptPlayers.get(a).getName(), "Stephen Curry") || Objects.equals(utilPlayers.get(b).getName(), "Stephen Curry") ||
-                                                                Objects.equals(utilPlayers.get(c).getName(), "Stephen Curry") || Objects.equals(utilPlayers.get(d).getName(), "Stephen Curry") ||
-                                                                Objects.equals(utilPlayers.get(e).getName(), "Stephen Curry") ||
-                                                                Objects.equals(utilPlayers.get(f).getName(), "Stephen Curry")) && (Objects.equals(cptPlayers.get(a).getName(), "Klay Thompson") ||
-                                                                Objects.equals(utilPlayers.get(b).getName(), "Klay Thompson") ||
-                                                                Objects.equals(utilPlayers.get(c).getName(), "Klay Thompson") || Objects.equals(utilPlayers.get(d).getName(), "Klay Thompson") ||
-                                                                Objects.equals(utilPlayers.get(e).getName(), "Klay Thompson") ||
-                                                                Objects.equals(utilPlayers.get(f).getName(), "Klay Thompson"))){
+//                                                        if((Objects.equals(cptPlayers.get(a).getName(), "Stephen Curry") || Objects.equals(utilPlayers.get(b).getName(), "Stephen Curry") ||
+//                                                                Objects.equals(utilPlayers.get(c).getName(), "Stephen Curry") || Objects.equals(utilPlayers.get(d).getName(),"Stephen Curry") ||
+//                                                                Objects.equals(utilPlayers.get(e).getName(), "Stephen Curry") || Objects.equals(utilPlayers.get(f).getName(), "Stephen Curry")) &&
+//                                                                (Objects.equals(cptPlayers.get(a).getName(), "Luka Doncic") || Objects.equals(utilPlayers.get(b).getName(), "Luka Doncic") ||
+//                                                                        Objects.equals(utilPlayers.get(c).getName(), "Luka Doncic") || Objects.equals(utilPlayers.get(d).getName(),"Luka Doncic") ||
+//                                                                        Objects.equals(utilPlayers.get(e).getName(), "Luka Doncic") || Objects.equals(utilPlayers.get(f).getName(), "Luka Doncic"))){
                                                             int totalSalary = cptPlayers.get(a).getSalary() + utilPlayers.get(b).getSalary() + utilPlayers.get(c).getSalary() + utilPlayers.get(d).getSalary() +
-                                                                    utilPlayers.get(e).getSalary() + utilPlayers.get(f).getSalary();
+                                                                    utilPlayers.get(e).getSalary() + utilPlayers.get(f).getSalary();{
 
-                                                            if (totalSalary <= 50000) {
-                                                                String totalNames = cptPlayers.get(a).getName() + " " + utilPlayers.get(b).getName() + " " + utilPlayers.get(c).getName() + " " + utilPlayers.get(d).getName() + " " +
-                                                                        utilPlayers.get(e).getName() + " " + utilPlayers.get(f).getName();
+                                                                String name1 = cptPlayers.get(a).getName();
+                                                                String name2 = utilPlayers.get(b).getName();
+                                                                String name3 = utilPlayers.get(c).getName();
+                                                                String name4 = utilPlayers.get(d).getName();
+                                                                String name5 = utilPlayers.get(e).getName();
+                                                                String name6 = utilPlayers.get(f).getName();
+                                                                            if (totalSalary <= 50000) {
+                                                                                String totalNames = cptPlayers.get(a).getName() + " " + utilPlayers.get(b).getName() + " " + utilPlayers.get(c).getName() + " " + utilPlayers.get(d).getName() + " " +
+                                                                                        utilPlayers.get(e).getName() + " " + utilPlayers.get(f).getName();
 
 
-                                                                double totalPoints = cptPlayers.get(a).getAveragePoints() + utilPlayers.get(b).getAveragePoints() + utilPlayers.get(c).getAveragePoints() + utilPlayers.get(d).getAveragePoints() +
-                                                                        utilPlayers.get(e).getAveragePoints() + utilPlayers.get(f).getAveragePoints();
+                                                                                double totalPoints = (cptPlayers.get(a).getAveragePoints() * 1.5)+ utilPlayers.get(b).getAveragePoints() + utilPlayers.get(c).getAveragePoints() + utilPlayers.get(d).getAveragePoints() +
+                                                                                        utilPlayers.get(e).getAveragePoints() + utilPlayers.get(f).getAveragePoints();
 
-                                                                bestTeam.setSalary(totalSalary);
-                                                                bestTeam.setAveragePoints(totalPoints);
-                                                                bestTeam.setName(totalNames);
+                                                                                bestTeam.setSalary(totalSalary);
+                                                                                bestTeam.setAveragePoints(totalPoints);
+                                                                                bestTeam.setName(totalNames);
 
-                                                                if (singleBestTeams.size() < 20000000) {
-                                                                    singleBestTeams.add(bestTeam);
-                                                                }
-                                                            }
-                                                        }
+                                                                                if (singleBestTeams.size() < 20000000) {
+                                                                                    singleBestTeams.add(bestTeam);
+                                                                                }
+                                                                            }
+                                                                        }
+                                                       // }
+
+
                                                     }
                                                 }
                                             }

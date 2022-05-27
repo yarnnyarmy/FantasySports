@@ -16,7 +16,7 @@ public class SingleBasketballGameServices {
 
         for(AllSingleBasketballPlayers people : allPlayers){
             SingleBasketballCpt cpt = new SingleBasketballCpt();
-            if(Objects.equals(people.getPosition(), "CPT") && people.getAveragePoints() > 9){
+            if(Objects.equals(people.getPosition(), "CPT")){
                 cpt.setName(people.getName());
                 cpt.setPosition(people.getPosition());
                 cpt.setTeam(people.getTeam());
@@ -42,7 +42,7 @@ public class SingleBasketballGameServices {
 
         for(AllSingleBasketballPlayers people : allPlayers){
             SingleBasketballUtil util = new SingleBasketballUtil();
-            if(Objects.equals(people.getPosition(), "UTIL") && people.getAveragePoints() > 9){
+            if(Objects.equals(people.getPosition(), "UTIL")){
                 util.setName(people.getName());
                 util.setPosition(people.getPosition());
                 util.setTeam(people.getTeam());
