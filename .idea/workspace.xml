@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b805632-e117-4b7d-800d-a8ff22df4b35" name="Changes" comment="Added different models that extend from AllBasketballGamePlayers. Also added the calculations class to add all the players to the bestTeam.">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+    <list default="true" id="1b805632-e117-4b7d-800d-a8ff22df4b35" name="Changes" comment="openCSV reads from bean.">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/model/MySqlConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/model/SingleBasketballGames/Players.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/model/SingleBasketballGames/Players.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/services/allBasketballGames/singleBasketballGames/ConvertFromCSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/services/singleBasketballGames/ConvertFromCSV.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/calculations/SingleBasketballCalculations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/calculations/SingleBasketballCalculations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/model/SingleBasketballGames/SingleBestTeams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/model/SingleBasketballGames/SingleBestTeams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/services/singleBasketballGames/ConvertFromCSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/services/singleBasketballGames/ConvertFromCSV.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,15 +40,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.yarrnyarmy.App" />
@@ -83,7 +90,9 @@
       <workItem from="1653341462953" duration="7198000" />
       <workItem from="1653354703505" duration="2000" />
       <workItem from="1653367619032" duration="6000" />
-      <workItem from="1653415732474" duration="2616000" />
+      <workItem from="1653415732474" duration="3130000" />
+      <workItem from="1653523958563" duration="1564000" />
+      <workItem from="1653670183695" duration="3821000" />
     </task>
     <task id="LOCAL-00001" summary="Added different models that extend from AllBasketballGamePlayers. Also added the calculations class to add all the players to the bestTeam.">
       <created>1653352168584</created>
@@ -92,7 +101,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653352168584</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="openCSV reads from bean.">
+      <created>1653418589849</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1653418589849</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,7 +127,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added different models that extend from AllBasketballGamePlayers. Also added the calculations class to add all the players to the bestTeam." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added different models that extend from AllBasketballGamePlayers. Also added the calculations class to add all the players to the bestTeam." />
+    <MESSAGE value="openCSV reads from bean." />
+    <option name="LAST_COMMIT_MESSAGE" value="openCSV reads from bean." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

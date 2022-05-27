@@ -13,7 +13,7 @@ public class ConvertFromCSV {
     public List<AllSingleBasketballPlayers> getPlayersFromCSV() {
         List<AllSingleBasketballPlayers> player = null;
         try {
-            FileReader file = new FileReader("C:\\Users\\Yarnell\\Desktop\\DKSalaries_2.csv");
+            FileReader file = new FileReader("C:\\Users\\Yarnell\\Desktop\\DKSalaries.csv");
             player = new CsvToBeanBuilder<AllSingleBasketballPlayers>(file)
                     .withType(AllSingleBasketballPlayers.class)
                     .build()
