@@ -1,5 +1,7 @@
-package org.yarrnyarmy.calculations;
+package org.yarrnyarmy.calculations.singleBasketball;
 
+import org.yarrnyarmy.model.AllBasketballGames.BestTeams;
+import org.yarrnyarmy.model.MySqlConnection;
 import org.yarrnyarmy.model.SingleBasketballGames.SingleBasketballCpt;
 
 import org.yarrnyarmy.model.SingleBasketballGames.SingleBasketballUtil;
@@ -7,6 +9,9 @@ import org.yarrnyarmy.model.SingleBasketballGames.SingleBestTeams;
 
 import org.yarrnyarmy.services.singleBasketballGames.SingleBasketballGameServices;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.*;
 
 public class SingleBasketballCalculations {
@@ -41,16 +46,18 @@ public class SingleBasketballCalculations {
                                                                     utilPlayers.get(e).getSalary() + utilPlayers.get(f).getSalary();
 
                                                             if (totalSalary <= 50000) {
-                                                                String totalNames = cptPlayers.get(a).getName() + " " + utilPlayers.get(b).getName() + " " + utilPlayers.get(c).getName() + " " + utilPlayers.get(d).getName() + " " +
-                                                                        utilPlayers.get(e).getName() + " " + utilPlayers.get(f).getName();
-
 
                                                                 double totalPoints = cptPlayers.get(a).getAveragePoints() + utilPlayers.get(b).getAveragePoints() + utilPlayers.get(c).getAveragePoints() + utilPlayers.get(d).getAveragePoints() +
                                                                         utilPlayers.get(e).getAveragePoints() + utilPlayers.get(f).getAveragePoints();
 
                                                                 bestTeam.setSalary(totalSalary);
                                                                 bestTeam.setAveragePoints(totalPoints);
-                                                                bestTeam.setName(totalNames);
+                                                                bestTeam.setCpt(cptPlayers.get(a).getName());
+                                                                bestTeam.setUtil1(utilPlayers.get(b).getName());
+                                                                bestTeam.setUtil2(utilPlayers.get(c).getName());
+                                                                bestTeam.setUtil3(utilPlayers.get(d).getName());
+                                                                bestTeam.setUtil4(utilPlayers.get(e).getName());
+                                                                bestTeam.setUtil5(utilPlayers.get(f).getName());
 
                                                                 if (singleBestTeams.size() < 20000000) {
                                                                     singleBestTeams.add(bestTeam);
@@ -77,8 +84,37 @@ public class SingleBasketballCalculations {
         return singleBestTeams;
     }
 
-    public List<SingleBestTeams> sortThroughPlayers(){
-        List<SingleBestTeams> players = getBestTeams();
+    public void addToDatabase(){
+        List<SingleBestTeams> singleBestTeams = getBestTeams();
+        MySqlConnection connection = new MySqlConnection();
+        if (singleBestTeams.size() > 0){
+            try{
+               Connection connect =  connection.sqlConnection();
+                System.out.println("Inserting all records...");
+                for (SingleBestTeams allTeams : singleBestTeams){
+                    String sql = "INSERT INTO singlegamebasketball (Cpt, Util1, Util2, Util3, Util4, Util5, TotalSalary, TotalPoints) " +
+                                                                    "VALUES (?,?,?,?,?,?,?,?)";
 
+                    PreparedStatement myStmt = connect.prepareStatement(sql);
+
+                    myStmt.setString(1, allTeams.getCpt());
+                    myStmt.setString(2, allTeams.getUtil1());
+                    myStmt.setString(3, allTeams.getUtil2());
+                    myStmt.setString(4, allTeams.getUtil3());
+                    myStmt.setString(5, allTeams.getUtil4());
+                    myStmt.setString(6, allTeams.getUtil5());
+                    myStmt.setInt(7, allTeams.getSalary());
+                    myStmt.setDouble(8, allTeams.getAveragePoints());
+                    myStmt.executeUpdate();
+                }
+                System.out.println("All records added...");
+            }catch(SQLException e) {
+                e.printStackTrace();
+                e.getCause();
+            }
+        }else{
+            System.out.println("There are no teams to add.");
+        }
     }
+
 }

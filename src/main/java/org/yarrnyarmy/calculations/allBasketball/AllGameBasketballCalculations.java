@@ -1,4 +1,4 @@
-package org.yarrnyarmy.calculations;
+package org.yarrnyarmy.calculations.allBasketball;
 
 import org.yarrnyarmy.model.AllBasketballGames.*;
 import org.yarrnyarmy.services.allBasketballGames.AllBasketballGameServices;

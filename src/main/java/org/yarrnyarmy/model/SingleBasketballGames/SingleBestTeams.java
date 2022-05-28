@@ -1,23 +1,65 @@
 package org.yarrnyarmy.model.SingleBasketballGames;
 
-import java.util.concurrent.atomic.AtomicLong;
-
 public class SingleBestTeams{
-    private static final AtomicLong count = new AtomicLong(0);
-    private long teamId;
+    private String cpt;
+    private String util1;
+    private String util2;
+    private String util3;
+    private String util4;
+    private String util5;
+
     private int salary;
     private double averagePoints;
-    private String name;
     public SingleBestTeams() {
     }
 
-    public long getTeamId() {
-        return teamId;
+
+    public String getCpt() {
+        return cpt;
     }
 
-    public void setTeamId(long teamId) {
+    public void setCpt(String cpt) {
+        this.cpt = cpt;
+    }
 
-        this.teamId = count.incrementAndGet();
+    public String getUtil1() {
+        return util1;
+    }
+
+    public void setUtil1(String util1) {
+        this.util1 = util1;
+    }
+
+    public String getUtil2() {
+        return util2;
+    }
+
+    public void setUtil2(String util2) {
+        this.util2 = util2;
+    }
+
+    public String getUtil3() {
+        return util3;
+    }
+
+    public void setUtil3(String util3) {
+        this.util3 = util3;
+    }
+
+    public String getUtil4() {
+        return util4;
+    }
+
+    public void setUtil4(String util4) {
+        this.util4 = util4;
+    }
+
+    public String getUtil5() {
+        return util5;
+    }
+
+    public void setUtil5(String util5) {
+        this.util5 = util5;
     }
 
     public int getSalary() {
@@ -36,21 +78,17 @@ public class SingleBestTeams{
         this.averagePoints = averagePoints;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @Override
     public String toString() {
         return "SingleBestTeams{" +
-                "teamId=" + teamId +
+                "cpt='" + cpt + '\'' +
+                ", util1='" + util1 + '\'' +
+                ", util2='" + util2 + '\'' +
+                ", util3='" + util3 + '\'' +
+                ", util4='" + util4 + '\'' +
+                ", util5='" + util5 + '\'' +
                 ", salary=" + salary +
                 ", averagePoints=" + averagePoints +
-                ", name='" + name + '\'' +
                 '}';
     }
 }
