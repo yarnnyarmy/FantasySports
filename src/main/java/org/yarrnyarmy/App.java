@@ -1,6 +1,7 @@
 package org.yarrnyarmy;
 
-import org.yarrnyarmy.calculations.singleBasketball.SingleBasketballCalculations;
+import org.yarrnyarmy.services.UserSelectGame;
+import org.yarrnyarmy.services.singleBasketballGames.AddInformationToClass;
 
 /**
  * Hello world!
@@ -10,15 +11,13 @@ public class App
 {
     public static void main( String[] args )
     {
+        UserSelectGame us = new UserSelectGame();
+        us.selectGamePlayer();
 
-        //AllBasketballGameServices af = new AllBasketballGameServices();
-        //af.getAllSG();
-        //af.addAllPlayers();
+        //AddInformationToClass it = new AddInformationToClass();
+        //it.addPlayersThroughLoop();
 
-        //AllGameBasketballCalculations afc = new AllGameBasketballCalculations();
-        //afc.getAllBestTeams();
-
-        SingleBasketballCalculations sc = new SingleBasketballCalculations();
-        sc.addToDatabase();
+        //WebScrapeNVAReference nv = new WebScrapeNVAReference();
+        //nv.addPlayersThroughLoop();
     }
 }

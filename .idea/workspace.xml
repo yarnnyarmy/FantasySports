@@ -4,14 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b805632-e117-4b7d-800d-a8ff22df4b35" name="Changes" comment="openCSV reads from bean.">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/model/MySqlConnection.java" afterDir="false" />
+    <list default="true" id="1b805632-e117-4b7d-800d-a8ff22df4b35" name="Changes" comment="Added MySql Connection. Need to change AtomicLong in singlebestteam class.">
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/services/UserSelectGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/services/singleBasketballGames/AddInformationToClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fa2753e1-8cc8-4a44-8a53-bbbab638bdc3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fa2753e1-8cc8-4a44-8a53-bbbab638bdc3/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fa2753e1-8cc8-4a44-8a53-bbbab638bdc3/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fa2753e1-8cc8-4a44-8a53-bbbab638bdc3/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fa2753e1-8cc8-4a44-8a53-bbbab638bdc3/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/calculations/SingleBasketballCalculations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/calculations/SingleBasketballCalculations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/calculations/singleBasketball/SingleBasketballCalculations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/calculations/singleBasketball/SingleBasketballCalculations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/doa/SingleGameDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/doa/SingleGameDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/model/MySqlConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/model/MySqlConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/model/SingleBasketballGames/AllSingleBasketballPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/model/SingleBasketballGames/AllSingleBasketballPlayers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/model/SingleBasketballGames/SingleBestTeams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/model/SingleBasketballGames/SingleBestTeams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/services/singleBasketballGames/ConvertFromCSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/services/singleBasketballGames/ConvertFromCSV.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/services/singleBasketballGames/ConvertFromCSV.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/services/singleBasketballGames/SingleBasketballGameServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yarrnyarmy/services/singleBasketballGames/SingleBasketballGameServices.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,20 +53,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;SQL Dialects&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.yarrnyarmy.App" />
@@ -92,7 +106,8 @@
       <workItem from="1653367619032" duration="6000" />
       <workItem from="1653415732474" duration="3130000" />
       <workItem from="1653523958563" duration="1564000" />
-      <workItem from="1653670183695" duration="3821000" />
+      <workItem from="1653670183695" duration="113774000" />
+      <workItem from="1654206625782" duration="8261000" />
     </task>
     <task id="LOCAL-00001" summary="Added different models that extend from AllBasketballGamePlayers. Also added the calculations class to add all the players to the bestTeam.">
       <created>1653352168584</created>
@@ -108,7 +123,21 @@
       <option name="project" value="LOCAL" />
       <updated>1653418589849</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added MySql Connection. Need to change AtomicLong in singlebestteam class.">
+      <created>1653682085572</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1653682085572</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added MySql Connection. Need to change AtomicLong in singlebestteam class.">
+      <created>1653686628114</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1653686628114</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,16 +157,45 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added different models that extend from AllBasketballGamePlayers. Also added the calculations class to add all the players to the bestTeam." />
     <MESSAGE value="openCSV reads from bean." />
-    <option name="LAST_COMMIT_MESSAGE" value="openCSV reads from bean." />
+    <MESSAGE value="Added MySql Connection. Need to change AtomicLong in singlebestteam class." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added MySql Connection. Need to change AtomicLong in singlebestteam class." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <breakpoint enabled="true" log-message="true" log-stack="true" type="java-exception">
+        <breakpoint log-message="true" log-stack="true" type="java-exception">
           <properties class="java.lang.OutOfMemoryError" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <breakpoint log-message="true" log-stack="true" type="java-exception">
+          <properties class="java.lang.NumberFormatException" package="java.lang" />
+          <option name="timeStamp" value="66" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/yarrnyarmy/doa/SingleGameDatabase.java</url>
+          <line>335</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/yarrnyarmy/doa/SingleGameDatabase.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="68" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/yarrnyarmy/calculations/singleBasketball/SingleBasketballCalculations.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="threePointsMade" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
